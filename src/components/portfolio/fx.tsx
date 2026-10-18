@@ -48,7 +48,7 @@ export function Magnetic({ children, className }: { children: ReactNode; classNa
   );
 }
 
-export function Tilt({ children, className, style }: { children: ReactNode; className?: string; style?: React.CSSProperties }) {
+export function Tilt({ children, className, style }: { children: ReactNode; className?: string; style?: Record<string, string | number> }) {
   const rx = useSpring(0, { stiffness: 150, damping: 20 });
   const ry = useSpring(0, { stiffness: 150, damping: 20 });
   const reduce = useReducedMotion();
@@ -127,11 +127,11 @@ export function Particles() {
       ctx.fillStyle = color;
       ctx.strokeStyle = color;
       for (let i = 0; i < n; i++) {
-        const a = pts[i];
+        const a = pts[i]!;
         ctx.globalAlpha = 0.6;
         ctx.beginPath(); ctx.arc(a.x, a.y, 1.2 * dpr, 0, Math.PI * 2); ctx.fill();
         for (let j = i + 1; j < n; j++) {
-          const b = pts[j];
+          const b = pts[j]!;
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < 120 * dpr) {
             ctx.globalAlpha = (1 - d / (120 * dpr)) * 0.15;
