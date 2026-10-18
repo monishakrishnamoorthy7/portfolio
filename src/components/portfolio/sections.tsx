@@ -115,7 +115,7 @@ function CodeOrb() {
 export function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 600], [0, 120]);
-  const words = `Hi, I'm ${profile.name}.`.split(" ");
+  const words = ["Hi,", "I'm", `${profile.name}.`];
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden pt-28">
       <div className="absolute inset-0 grid-bg" />
@@ -130,7 +130,7 @@ export function Hero() {
           </motion.div>
           <h1 className="text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
             {words.map((w, k) => (
-              <span key={k} className="inline-block overflow-hidden pb-1 align-bottom">
+              <span key={k} className="inline-block overflow-hidden whitespace-nowrap pb-1 align-bottom">
                 <motion.span className="inline-block" initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: 1.4 + k * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>{w}&nbsp;</motion.span>
               </span>
             ))}
