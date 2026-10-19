@@ -1,41 +1,42 @@
-// Edit everything about the portfolio here. Leave a link as "" to hide it / show a placeholder.
+// Edit everything about the portfolio here. Leave a link as "" to show it as unavailable.
 
 export const profile = {
   name: "Monisha K",
-  role: "B.E. Computer Science and Engineering",
+  role: "Third-Year B.E. Computer Science and Engineering Student",
   college: "Chennai Institute of Technology",
   location: "Chennai, India",
   tagline:
-    "I build thoughtful digital experiences and intelligent applications that solve real problems.",
+    "I build practical software systems across full-stack development, AI-powered applications, and problem-solving.",
   rotating: ["Developer.", "Problem Solver.", "AI Builder.", "Future Software Engineer."],
   links: {
-    github: "https://github.com/monishakrishnamoorthy7",
+    github: "https://github.com/monishamonisha07",
     linkedin: "https://www.linkedin.com/in/themonisha/",
-    email: "", // e.g. "you@example.com"
-    resume: "", // e.g. "/resume.pdf" (place the file in /public)
-    leetcode: "",
+    email: "monishak.cse2024@citchennai.net",
+    resume: "https://drive.google.com/file/d/1jhIn9yAPTR-oIVMsoS6wEqX6cdfKSK78/view?usp=drivesdk",
+    leetcode: "https://leetcode.com/u/monimonisha07/",
   },
 };
 
 export const about = [
   { k: "Now", t: "Third-year CSE student", d: "Studying Computer Science and Engineering at Chennai Institute of Technology." },
-  { k: "Building", t: "Full-stack & AI products", d: "Exploring how modern web stacks and LLMs combine into practical, useful tools." },
-  { k: "Mindset", t: "Problem-first", d: "I start from a real problem, then pick the simplest technology that solves it well." },
-  { k: "Next", t: "Internships & placements", d: "Looking for software engineering roles where I can learn fast and ship real work." },
+  { k: "Building", t: "Full-stack & AI products", d: "Exploring full-stack development, AI-powered applications, and practical software systems." },
+  { k: "Mindset", t: "Problem-solving", d: "I enjoy breaking down real problems and building clear, useful solutions." },
+  { k: "Next", t: "Growing through projects", d: "Continuing to learn through hands-on development and collaborative opportunities." },
 ];
 
 export const snapshot = [
   { label: "Education", value: "B.E. CSE" },
   { label: "College", value: "Chennai Institute of Technology" },
+  { label: "Graduation", value: "2028" },
+  { label: "CGPA", value: "8.3 / 10" },
   { label: "Current focus", value: "Full-Stack Development & AI" },
-  { label: "Career goal", value: "SWE Internships & Placements" },
 ];
 
 export type Project = {
   id: string;
   name: string;
   category: string;
-  status: "Planned" | "In Progress" | "Completed";
+  status: "Planned" | "In Progress" | "Completed" | "Featured";
   accent: string; // CSS color var
   concept: string;
   problem: string;
@@ -55,21 +56,12 @@ export const projects: Project[] = [
     category: "AI / Full-Stack Development",
     status: "In Progress",
     accent: "var(--violet)",
-    concept:
-      "An intelligent document assistant: upload PDFs or scanned documents, ask questions in Tamil or English, and extract structured information with source-grounded answers.",
-    problem: "Information locked in long PDFs and scans is slow to search, especially across languages.",
-    solution: "OCR + semantic retrieval + an LLM that answers only from your documents, with citations.",
-    architecture: ["Upload & OCR", "Chunk & embed", "Vector search", "LLM answer + citations"],
-    features: [
-      "PDF upload and document validation",
-      "OCR for scanned documents",
-      "Semantic search with RAG",
-      "Answers with document citations",
-      "Tamil and English Q&A",
-      "Secure auth and document access control",
-      "Evaluation: retrieval quality, answer correctness, extraction precision/recall",
-    ],
-    stack: ["React", "TypeScript", "Python", "OCR", "Embeddings", "Vector DB", "LLM API"],
+    concept: "A bilingual document assistant concept exploring OCR and Retrieval-Augmented Generation (RAG) for working with documents.",
+    problem: "Documents can be difficult to search and understand when information is spread across long or scanned files.",
+    solution: "A planned OCR and retrieval-based workflow for exploring grounded document assistance.",
+    architecture: ["Document input", "OCR exploration", "Retrieval exploration", "Assistant concept"],
+    features: ["Bilingual document assistance concept", "OCR exploration", "Retrieval-Augmented Generation exploration"],
+    stack: ["OCR", "RAG", "React.js"],
     github: "",
     demo: "",
     caseStudy: "",
@@ -80,20 +72,92 @@ export const projects: Project[] = [
     category: "AI / Career Technology",
     status: "Planned",
     accent: "var(--cyan)",
-    concept:
-      "An AI-powered interview and skills coach that helps students prepare for technical interviews and identify skill gaps.",
+    concept: "An AI-assisted interview preparation concept for practicing technical interviews and identifying skill gaps.",
     problem: "Students rarely get structured, personalised interview practice and honest feedback.",
-    solution: "Parse the resume, generate tailored questions, and score answers against clear rubrics.",
-    architecture: ["Resume parsing", "Question generation", "Mock interview", "Rubric feedback"],
-    features: [
-      "Resume parsing and skill extraction",
-      "Personalised interview questions",
-      "Text mock interviews (voice later)",
-      "Rubric-based answer feedback",
-      "Skill-gap analysis & practice plans",
-      "Progress dashboard and history",
-    ],
-    stack: ["React", "TypeScript", "Python / Node.js", "Database", "LLM API"],
+    solution: "A future concept for structured interview practice and feedback.",
+    architecture: ["Preparation concept", "Question practice", "Feedback concept"],
+    features: ["AI-assisted interview preparation concept"],
+    stack: ["AI", "Interview preparation"],
+    github: "",
+    demo: "",
+    caseStudy: "",
+  },
+  {
+    id: "certchain",
+    name: "CertChain",
+    category: "Blockchain / Full-Stack",
+    status: "Planned",
+    accent: "var(--violet)",
+    concept: "A blockchain-based certificate verification system with hash-based integrity verification and a web interface.",
+    problem: "Certificate verification needs a reliable way to check whether issued information has been altered.",
+    solution: "Uses certificate hashes and a web verification workflow to support integrity checks.",
+    architecture: ["Certificate hash", "Blockchain record", "Web3 connection", "Verification UI"],
+    features: ["Blockchain-based verification", "Hash-based certificate integrity verification", "Web interface for verification"],
+    stack: ["Solidity", "Ethereum", "Web3.js", "React.js", "SHA-256"],
+    github: "",
+    demo: "",
+    caseStudy: "",
+  },
+  {
+    id: "safe-transit",
+    name: "Safe Transit",
+    category: "Full-Stack / Civic Technology",
+    status: "Planned",
+    accent: "var(--cyan)",
+    concept: "A public transport safety feedback platform for reporting issues and following issue-tracking workflows.",
+    problem: "Public transport concerns need a clear, accessible way to be reported and tracked.",
+    solution: "A low-bandwidth-friendly interface with reporting workflows and an AI chatbot.",
+    architecture: ["Issue report", "Workflow tracking", "MongoDB data", "AI chatbot"],
+    features: ["Public transport issue reporting", "Issue-tracking workflows", "Low-bandwidth-friendly interface"],
+    stack: ["React", "Express.js", "MongoDB", "AI chatbot"],
+    github: "",
+    demo: "",
+    caseStudy: "",
+  },
+  {
+    id: "expense-tracker",
+    name: "Expense Tracker",
+    category: "Web Development",
+    status: "Planned",
+    accent: "var(--indigo)",
+    concept: "An expense management application with database-backed records and bill scanning.",
+    problem: "Recording expenses and extracting details from bills can be repetitive.",
+    solution: "Combines expense records with OCR-based bill scanning.",
+    architecture: ["Bill scan", "OCR extraction", "Database record", "Expense view"],
+    features: ["Expense management", "Bill scanning", "Database-backed expense records"],
+    stack: ["Next.js", "PostgreSQL", "Supabase", "OCR"],
+    github: "",
+    demo: "",
+    caseStudy: "",
+  },
+  {
+    id: "sentiment-health-analysis",
+    name: "AI Sentiment/Health Analysis",
+    category: "AI / NLP",
+    status: "Planned",
+    accent: "var(--violet)",
+    concept: "An AI-assisted text analysis project exploring sentiment and health-related language with retrieval and NLP concepts.",
+    problem: "Large amounts of text can be difficult to review consistently and efficiently.",
+    solution: "Uses retrieval and NLP concepts to assist with text analysis; it is not a medical diagnostic tool.",
+    architecture: ["Text input", "Retrieval", "NLP analysis", "Assisted output"],
+    features: ["AI-assisted text analysis", "Retrieval-Augmented Generation concepts", "NLP-based sentiment exploration"],
+    stack: ["Python", "RAG", "Groq AI", "NLP"],
+    github: "",
+    demo: "",
+    caseStudy: "",
+  },
+  {
+    id: "boston-house-price",
+    name: "Boston House Price Predictor",
+    category: "Machine Learning",
+    status: "Planned",
+    accent: "var(--cyan)",
+    concept: "A regression-based house-price prediction project focused on feature engineering and model evaluation.",
+    problem: "Property price estimation requires understanding relationships between housing features and outcomes.",
+    solution: "Applies machine learning regression models to explore price prediction.",
+    architecture: ["Data preparation", "Feature engineering", "Regression model", "Evaluation"],
+    features: ["House-price prediction", "Feature engineering", "Model evaluation"],
+    stack: ["Python", "Scikit-learn", "Machine Learning"],
     github: "",
     demo: "",
     caseStudy: "",
@@ -101,17 +165,38 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
-  { group: "Frontend", items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"] },
-  { group: "Backend", items: ["Node.js", "REST APIs", "Database integration"] },
-  { group: "Programming", items: ["Java", "Python"] },
-  { group: "AI", items: ["LLM integration", "Embeddings", "RAG concepts", "OCR", "Evaluation"] },
-  { group: "Tools", items: ["Git", "GitHub", "VS Code"] },
-  { group: "Mobile", items: ["Flutter", "Mobile app development"] },
+  { group: "Languages", items: ["Java", "Python", "C++", "JavaScript", "Solidity"] },
+  { group: "Frontend", items: ["React.js", "Next.js", "Vite", "HTML5", "CSS3", "Tailwind CSS"] },
+  { group: "Backend & databases", items: ["Node.js", "Express.js", "REST APIs", "MongoDB", "PostgreSQL", "MySQL", "Supabase"] },
+  { group: "AI / ML", items: ["Scikit-learn", "NLP", "RAG", "Generative AI", "OCR integration"] },
+  { group: "Blockchain", items: ["Ethereum", "Solidity", "Smart Contracts", "SHA-256", "Web3.js"] },
+  { group: "Tools & cloud", items: ["AWS", "Git", "GitHub", "Postman", "VS Code"] },
+  { group: "Mobile", items: ["Flutter"] },
 ];
 
-// Add verified entries only. Empty list shows an "add your entries" placeholder.
 export const experience: { title: string; org: string; date: string; detail: string }[] = [
-  { title: "B.E. Computer Science and Engineering", org: "Chennai Institute of Technology", date: "Ongoing · 3rd year", detail: "Core CS coursework, projects and campus activities." },
+  { title: "Full Stack Developer Intern", org: "Acutix Soft LLP", date: "Remote · 2 months", detail: "Worked with React.js, Node.js, and MongoDB; developed full-stack features and REST APIs; worked on database queries and frontend/backend integration." },
+  { title: "Web Development Intern", org: "Veerel Enterprises", date: "On-site · 1 month", detail: "Built an expense tracker using Next.js, PostgreSQL, and Supabase, including OCR-based bill scanning." },
+  { title: "Android Developer Virtual Intern", org: "Google for Developers / AICTE / EduSkills", date: "Virtual · 10 weeks", detail: "Completed structured Android development learning and built mobile prototypes." },
 ];
 
-export const achievements: { title: string; detail: string; kind: string }[] = [];
+export const achievements: { title: string; detail: string; kind: string }[] = [
+  { title: "Solved 700+ LeetCode problems", detail: "Problem-solving milestone.", kind: "Coding" },
+  { title: "LeetCode 100-Day Consistency Badge", detail: "Consistency milestone.", kind: "Coding" },
+  { title: "Finalist — AWS ImpactX Challenge, IIT Bombay", detail: "Finalist recognition.", kind: "Challenge" },
+  { title: "Finalist — Health Hack '26, VIT Bhopal", detail: "Finalist recognition.", kind: "Hackathon" },
+  { title: "Best Presenter — CODEATHON", detail: "Best Presenter recognition.", kind: "Hackathon" },
+  { title: "Top 20% — WorldQuant International Quant Championship (IQC), Stage 1", detail: "Stage 1 placement.", kind: "Competition" },
+  { title: "Participant — Goldman Sachs India Hackathon 2026", detail: "Hackathon participation.", kind: "Hackathon" },
+  { title: "Participant — Adobe Hackathon", detail: "Hackathon participation.", kind: "Hackathon" },
+  { title: "Participant — Gen AI Hackathon", detail: "Hackathon participation.", kind: "Hackathon" },
+];
+
+export const certifications: { name: string; issuer: string; type: "Professional certification" | "Course completion" }[] = [
+  { name: "AWS Certified AI Practitioner (AIF-C01)", issuer: "AWS", type: "Professional certification" },
+  { name: "AWS Cloud Practitioner Essentials", issuer: "AWS", type: "Course completion" },
+  { name: "AI Fundamentals", issuer: "IBM SkillsBuild", type: "Course completion" },
+  { name: "MongoDB Basics", issuer: "MongoDB", type: "Course completion" },
+  { name: "Cybersecurity and IoT", issuer: "Cisco", type: "Course completion" },
+  { name: "Introduction to IoT", issuer: "NPTEL", type: "Course completion" },
+];

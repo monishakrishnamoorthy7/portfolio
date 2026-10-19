@@ -1,14 +1,15 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, FileText, Menu, X, Code2, Sparkles, Trophy, Plus } from "lucide-react";
-import { profile, about, snapshot, projects, skills, experience, achievements, type Project } from "@/data/portfolio";
+import { profile, about, snapshot, projects, skills, experience, achievements, certifications, type Project } from "@/data/portfolio";
 import { Reveal, SectionHeading, Magnetic, Tilt, Particles } from "./fx";
 
 const nav = [
   { id: "about", label: "About" },
-  { id: "work", label: "Work" },
+  { id: "work", label: "Projects" },
   { id: "stack", label: "Stack" },
-  { id: "journey", label: "Journey" },
+  { id: "experience", label: "Experience" },
+  { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -19,14 +20,14 @@ function LinkBtn({ href, children, variant = "ghost", placeholder }: { href: str
     : "glass text-foreground hover:border-primary/60";
   if (!href) {
     return (
-      <span title={placeholder ?? "Coming soon"} aria-disabled className={`${base} glass cursor-not-allowed text-muted-foreground opacity-60`}>
-        {children}<span className="font-mono text-[10px] uppercase tracking-wider">soon</span>
+      <span title={placeholder ?? "Unavailable"} aria-disabled className={`${base} glass cursor-not-allowed text-muted-foreground opacity-60`}>
+        {children}        <span className="font-mono text-[10px] uppercase tracking-wider">unavailable</span>
       </span>
     );
   }
   const external = href.startsWith("http");
   return (
-    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className={`${base} ${styles}`}>
+    <a href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className={`${base} ${styles}`}>
       {children}
     </a>
   );
@@ -210,9 +211,9 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
               {p.stack.map((s) => <span key={s} className="rounded-full bg-secondary px-3 py-1 font-mono text-xs text-secondary-foreground">{s}</span>)}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <LinkBtn href={p.github}><Github className="h-4 w-4" /> GitHub</LinkBtn>
-              <LinkBtn href={p.demo}>Live Demo</LinkBtn>
-              <LinkBtn href={p.caseStudy}>Case Study</LinkBtn>
+              <LinkBtn href={p.github} placeholder="No repository URL supplied"><Github className="h-4 w-4" /> GitHub</LinkBtn>
+              <LinkBtn href={p.demo} placeholder="No live demo URL supplied">Live Demo</LinkBtn>
+              <LinkBtn href={p.caseStudy} placeholder="No case study URL supplied">Case Study</LinkBtn>
             </div>
           </div>
           <div className="space-y-6">
@@ -228,8 +229,8 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
                 ))}
               </div>
             </div>
-            <div>
-              <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">Planned features</p>
+            <div id="experience" className="scroll-mt-24">
+              <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">Highlights</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {p.features.map((f) => <li key={f} className="flex gap-2"><span style={{ color: p.accent }}>▹</span>{f}</li>)}
               </ul>
@@ -244,7 +245,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
 export function Work() {
   return (
     <section id="work" className="mx-auto max-w-6xl px-5 py-32">
-      <SectionHeading eyebrow="02 — Featured work" title={<>Things I'm <span className="text-gradient">building.</span></>} />
+      <SectionHeading eyebrow="02 — Projects & ideas" title={<>Things I'm <span className="text-gradient">exploring.</span></>} />
       <div className="space-y-10">{projects.map((p, k) => <ProjectCard key={p.id} p={p} index={k} />)}</div>
     </section>
   );
@@ -296,23 +297,34 @@ export function Journey() {
                 <p className="text-sm text-muted-foreground">{e.org} — {e.detail}</p>
               </Reveal>
             ))}
-            <Placeholder text="Internships, training & certifications will appear here once added." />
+            <div className="mt-8">
+              <h3 className="mb-4 text-lg font-semibold">Certifications</h3>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {certifications.map((c) => (
+                  <div key={c.name} className="glass rounded-2xl p-4">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent">{c.type}</p>
+                    <h4 className="mt-2 font-semibold">{c.name}</h4>
+                    <p className="mt-1 text-sm text-muted-foreground">{c.issuer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div>
+        <div id="achievements" className="scroll-mt-24">
           <h3 className="mb-6 flex items-center gap-2 text-xl font-semibold"><Trophy className="h-5 w-5 text-accent" />Achievements</h3>
           {achievements.length ? (
             <div className="space-y-3">{achievements.map((a) => <div key={a.title} className="glass rounded-2xl p-5"><p className="font-mono text-xs text-accent">{a.kind}</p><h4 className="font-semibold">{a.title}</h4><p className="text-sm text-muted-foreground">{a.detail}</p></div>)}</div>
-          ) : <Placeholder text="Hackathons, coding milestones & academic wins — coming soon." />}
+          ) : <Placeholder text="No achievements supplied yet." />}
           <h3 className="mb-6 mt-12 text-xl font-semibold">Coding profiles</h3>
           <div className="grid gap-3 sm:grid-cols-2">
             {[{ n: "GitHub", h: profile.links.github, i: Github }, { n: "LinkedIn", h: profile.links.linkedin, i: Linkedin }, { n: "LeetCode", h: profile.links.leetcode, i: Code2 }].map(({ n, h, i: Icon }) => (
               h ? (
-                <a key={n} href={h} target="_blank" rel="noreferrer" className="glass glow-border group flex items-center justify-between rounded-2xl p-5">
+                <a key={n} href={h} target="_blank" rel="noopener noreferrer" className="glass glow-border group flex items-center justify-between rounded-2xl p-5">
                   <span className="flex items-center gap-3"><Icon className="h-5 w-5" />{n}</span>
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </a>
-              ) : <Placeholder key={n} text={`${n} — link coming soon`} />
+              ) : <Placeholder key={n} text={`${n} — profile URL not supplied`} />
             ))}
           </div>
         </div>
@@ -334,7 +346,7 @@ export function Contact() {
           <Magnetic><LinkBtn href={l.email ? `mailto:${l.email}` : ""} variant="primary"><Mail className="h-4 w-4" /> Email</LinkBtn></Magnetic>
           <Magnetic><LinkBtn href={l.linkedin}><Linkedin className="h-4 w-4" /> LinkedIn</LinkBtn></Magnetic>
           <Magnetic><LinkBtn href={l.github}><Github className="h-4 w-4" /> GitHub</LinkBtn></Magnetic>
-          <Magnetic><LinkBtn href={l.resume} placeholder="Resume coming soon"><FileText className="h-4 w-4" /> Resume</LinkBtn></Magnetic>
+          <Magnetic><LinkBtn href={l.resume} placeholder="Add public/resume.pdf to enable download"><FileText className="h-4 w-4" /> Resume</LinkBtn></Magnetic>
         </Reveal>
       </div>
       <footer className="relative mx-auto mt-32 flex max-w-6xl flex-wrap justify-between gap-4 border-t pt-8 font-mono text-xs text-muted-foreground">

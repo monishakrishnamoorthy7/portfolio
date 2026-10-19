@@ -7,6 +7,10 @@ This project was built with [Lovable](https://lovable.dev).
 
 **Live app**: https://monisha030307.lovable.app
 
+## Resume
+
+The Resume action currently opens the resume file supplied via Google Drive. For a self-contained deployment, place the PDF at `public/resume.pdf` and set `profile.links.resume` to `/resume.pdf` in `src/data/portfolio.ts`.
+
 ## Build with Lovable
 
 Continue developing this project in the [Lovable editor](https://lovable.dev/projects/6ba97c05-866a-4440-a34c-dd7c46948790).
